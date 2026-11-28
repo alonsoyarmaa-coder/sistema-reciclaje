@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,11 @@ public class EntregaController {
     @GetMapping
     public List<Entrega> listar() {
         return entregaService.listar();
+    }
+
+    @GetMapping("/cliente/{clienteId}")
+    public List<Entrega> listarPorCliente(@PathVariable Integer clienteId) {
+        return entregaService.listarPorCliente(clienteId);
     }
 
     @PostMapping
